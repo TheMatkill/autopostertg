@@ -70,7 +70,7 @@ f"""
 
     
 scheduler = AsyncIOScheduler()
-scheduler.add_job(sending, "cron", hour='9,12,18,23', minute='30')
+scheduler.add_job(sending, "cron", hour='4,7,11,18', minute='30')
 scheduler.start()
 app.run()
 
