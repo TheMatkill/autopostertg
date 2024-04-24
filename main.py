@@ -48,7 +48,7 @@ async def sending():
     # await app.send_photo("me", "poster.jpg", caption=f"{text}")
     for chat in chats:
         try:
-            await app.send_photo(chat[1], "autopostertg/poster.jpg", caption=f"{text + chat[2]}")
+            await app.send_photo(chat[1], "/autopostertg/poster.jpg", caption=f"{text + chat[2]}")
             photo += 1
             success += 1
             await asyncio.sleep(10)
