@@ -48,7 +48,7 @@ async def sending():
     # await app.send_photo("me", "poster.jpg", caption=f"{text}")
     for chat in chats:
         try:
-            await app.send_photo(chat[1], "poster.jpg", caption=f"{text + chat[2]}")
+            await app.send_photo(chat[1], "/poster.jpg", caption=f"{text + chat[2]}")
             photo += 1
             success += 1
             await asyncio.sleep(10)
@@ -70,7 +70,7 @@ f"""
 
     
 scheduler = AsyncIOScheduler()
-scheduler.add_job(sending, "cron", hour='4,7,11,18', minute='30')
+scheduler.add_job(sending, "cron", hour='9,10,15,17', minute='30')
 scheduler.start()
 app.run()
 
