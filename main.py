@@ -45,33 +45,33 @@ async def sending():
     success = 0
     nothing = 0
     photo = 0
-    await app.send_photo("me", "poster.jpg", caption=f"{text}")
-#     for chat in chats:
-#         try:
-#             await app.send_photo(chat[1], "poster.jpg", caption=f"{text + chat[2]}")
-#             photo += 1
-#             success += 1
-#             await asyncio.sleep(10)
-#         except Exception as e:
-#             try:
-#                 await app.send_message(chat[1], text + chat[2])
-#                 success += 1
-#                 await asyncio.sleep(10)
-#             except Exception as e:
-#                 nothing += 1
+    # await app.send_photo("me", "poster.jpg", caption=f"{text}")
+    for chat in chats:
+        try:
+            await app.send_photo(chat[1], "poster.jpg", caption=f"{text + chat[2]}")
+            photo += 1
+            success += 1
+            await asyncio.sleep(10)
+        except Exception as e:
+            try:
+                await app.send_message(chat[1], text + chat[2])
+                success += 1
+                await asyncio.sleep(10)
+            except Exception as e:
+                nothing += 1
             
-#             continue
-#     await app.send_message('me', 
-# f"""
-# Успешно отправлено: {success}
-# С фото: {photo}
-# Неудачно: {nothing}
-# Время: {datetime.datetime.now()}
-# """)
+            continue
+    await app.send_message('me', 
+f"""
+Успешно отправлено: {success}
+С фото: {photo}
+Неудачно: {nothing}
+Время: {datetime.datetime.now()}
+""")
 
     
 scheduler = AsyncIOScheduler()
-scheduler.add_job(sending, "cron", hour='9,10,15,17', minute='45')
+scheduler.add_job(sending, "cron", hour='7,10,12,17', minute='45')
 scheduler.start()
 app.run()
 
